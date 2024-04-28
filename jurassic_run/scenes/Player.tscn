@@ -1,0 +1,187 @@
+[gd_scene load_steps=9 format=3 uid="uid://c5yywdtdvnn18"]
+
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_ecp3w"]
+[ext_resource type="Texture2D" uid="uid://bxuu0xpv80qba" path="res://assets/Player/player_sprite.png" id="1_l1r27"]
+[ext_resource type="AudioStream" uid="uid://vgtdccchw6ct" path="res://assets/Sound/gun_shot.mp3" id="3_abkyh"]
+
+[sub_resource type="Animation" id="Animation_agyvf"]
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_l1r27")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_kjghg"]
+resource_name = "jump_animation"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_l1r27")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_fpsgt"]
+resource_name = "run_animation"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_l1r27")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:frame")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gqmli"]
+_data = {
+"RESET": SubResource("Animation_agyvf"),
+"jump_animation": SubResource("Animation_kjghg"),
+"run_animation": SubResource("Animation_fpsgt")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_heavk"]
+size = Vector2(69, 68)
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(-38, 8)
+collision_mask = 18
+script = ExtResource("1_ecp3w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4, -1)
+texture = ExtResource("1_l1r27")
+centered = false
+hframes = 6
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+position = Vector2(-714, 0)
+polygon = PackedVector2Array(786, 53.4, 776, 49.4, 776, 44.2, 778.9, 41.3, 773.7, 33.1, 774.8, 31, 776.8, 31, 796, 28.8, 796, 30.5, 806.3, 33.5, 808.5, 26, 810.3, 26, 816, 21.1, 816, 19, 831, 19, 831, 20.9, 840, 25.8, 840, 51, 845.1, 59, 853.1, 59, 875, 61.2, 875, 62.9, 882.6, 68, 884.9, 68, 888.8, 61, 895, 61, 895, 64, 897.3, 81, 894.5, 81, 889.6, 84, 882.8, 84, 880.7, 83.5, 861, 92.3, 853.2, 108, 850.3, 108, 836, 97.1, 836, 123, 834.4, 123, 831, 132.4, 831, 153, 829.1, 153, 816.2, 176, 814.8, 176, 810, 180.8, 810, 183.1, 817, 189.1, 817, 196, 788, 196, 788, 195, 786.8, 181, 788.7, 181, 793, 171.6, 793, 167.9, 794.2, 155, 795.9, 155, 796.7, 153.7, 793.6, 153.3, 784.7, 160, 777, 160, 777, 157.3, 773, 148, 775.6, 148, 782.6, 128, 785, 128, 785, 124.3, 780, 107.3, 780, 102.9, 782.9, 101, 780.2, 93, 783.5, 93, 786, 91.8, 786, 56)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_gqmli")
+}
+autoplay = "run_animation"
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(188, 63)
+
+[node name="cactus_detect" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 68
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cactus_detect"]
+position = Vector2(105.5, 166)
+shape = SubResource("RectangleShape2D_heavk")
+
+[node name="GunSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_abkyh")
+
+[connection signal="area_entered" from="cactus_detect" to="." method="_on_area_2d_area_entered"]

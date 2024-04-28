@@ -1,0 +1,109 @@
+[gd_scene load_steps=8 format=3 uid="uid://561jak502e3y"]
+
+[ext_resource type="Script" path="res://scripts/GameOver.gd" id="1_x740b"]
+[ext_resource type="Texture2D" uid="uid://cf25kcdk2argr" path="res://assets/graphics/Sky.png" id="1_xxhsb"]
+[ext_resource type="Texture2D" uid="uid://naoa406mii0o" path="res://assets/graphics/ground.png" id="2_3wvwf"]
+[ext_resource type="FontFile" uid="uid://d5telyqdyxm7" path="res://assets/font/Lora-Italic-VariableFont_wght.ttf" id="3_vk4g0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6c5fv"]
+bg_color = Color(0.717647, 0.494118, 0.835294, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hlnyo"]
+bg_color = Color(0.815686, 0.368627, 0.960784, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3rjyp"]
+bg_color = Color(0.752941, 0.517647, 0.913725, 1)
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_x740b")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(2, -10)
+scale = Vector2(9.9625, 10.1444)
+texture = ExtResource("1_xxhsb")
+centered = false
+
+[node name="Ground" type="Sprite2D" parent="."]
+position = Vector2(-9, 834)
+scale = Vector2(1.624, 0.390476)
+texture = ExtResource("2_3wvwf")
+centered = false
+
+[node name="HighScore" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 962.0
+offset_top = 394.0
+offset_right = 1219.0
+offset_bottom = 446.0
+theme_override_colors/font_color = Color(0.494118, 0, 0.27451, 1)
+theme_override_colors/font_outline_color = Color(0.486275, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_vk4g0")
+theme_override_font_sizes/font_size = 51
+text = "HIGH SCORE:
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Replay_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 603.0
+offset_top = 566.0
+offset_right = 951.0
+offset_bottom = 626.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_vk4g0")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_6c5fv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hlnyo")
+text = "RE-PLAY"
+
+[node name="Quit_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 607.0
+offset_top = 653.0
+offset_right = 948.0
+offset_bottom = 720.0
+theme_override_fonts/font = ExtResource("3_vk4g0")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_3rjyp")
+text = "QUIT"
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 196.0
+offset_top = 397.0
+offset_right = 523.0
+offset_bottom = 463.0
+theme_override_colors/font_color = Color(0.494118, 0, 0.27451, 1)
+theme_override_colors/font_outline_color = Color(0.486275, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_vk4g0")
+theme_override_font_sizes/font_size = 51
+text = "SCORE:
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOver" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 442.0
+offset_top = 29.0
+offset_right = 1089.0
+offset_bottom = 273.0
+theme_override_colors/font_color = Color(0.494118, 0, 0.27451, 1)
+theme_override_colors/font_outline_color = Color(0.486275, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_vk4g0")
+theme_override_font_sizes/font_size = 100
+text = "GAME OVER!
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Replay_button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Quit_button" to="." method="_on_quit_button_pressed"]

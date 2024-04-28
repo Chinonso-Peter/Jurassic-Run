@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=3 uid="uid://0l3ylvnapdt6"]
+
+[ext_resource type="Script" path="res://scripts/Dino.gd" id="1_3d364"]
+[ext_resource type="Texture2D" uid="uid://bl7paw7oo85qf" path="res://assets/Dino/dino_sprite.png" id="1_k663m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edbl5"]
+atlas = ExtResource("1_k663m")
+region = Rect2(0, 0, 300, 213)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfamk"]
+atlas = ExtResource("1_k663m")
+region = Rect2(300, 0, 300, 213)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dim1b"]
+atlas = ExtResource("1_k663m")
+region = Rect2(0, 213, 300, 213)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnsv3"]
+atlas = ExtResource("1_k663m")
+region = Rect2(300, 213, 300, 213)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2kvx"]
+atlas = ExtResource("1_k663m")
+region = Rect2(0, 426, 300, 213)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isbaq"]
+atlas = ExtResource("1_k663m")
+region = Rect2(300, 426, 300, 213)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i5ffd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edbl5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfamk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dim1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnsv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2kvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isbaq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 11.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bgc45"]
+size = Vector2(241, 148)
+
+[node name="Dino" type="Area2D"]
+position = Vector2(-13, -5)
+collision_layer = 2
+collision_mask = 9
+script = ExtResource("1_3d364")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-3, -20)
+scale = Vector2(1.20667, 1.16901)
+sprite_frames = SubResource("SpriteFrames_i5ffd")
+autoplay = "default"
+frame_progress = 0.889824
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(170.5, 91)
+shape = SubResource("RectangleShape2D_bgc45")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

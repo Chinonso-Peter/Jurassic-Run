@@ -1,0 +1,43 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="jurassic_run"
+run/main_scene="res://scenes/StartGame.tscn"
+config/features=PackedStringArray("4.2", "Mobile")
+config/icon="res://icon.svg"
+
+[autoload]
+
+GameStats="*res://singleton/Game_stats.gd"
+
+[display]
+
+window/size/viewport_width=1600
+window/size/viewport_height=900
+window/size/window_width_override=1200
+window/size/window_height_override=675
+window/stretch/mode="canvas_items"
+
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="dino"
+2d_physics/layer_3="cactus "
+2d_physics/layer_4="bullet "
+2d_physics/layer_5="ground"
+2d_physics/layer_6="player_1"
+2d_physics/layer_7="ground_1"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=3
+renderer/rendering_method="mobile"
